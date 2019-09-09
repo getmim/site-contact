@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'site-contact',
-    '__version' => '0.0.1',
+    '__version' => '0.0.2',
     '__git' => 'git@github.com:getmim/site-contact.git',
     '__license' => 'MIT',
     '__author' => [
@@ -51,6 +51,10 @@ return [
             'SiteContact\\Meta' => [
                 'type' => 'file',
                 'base' => 'modules/site-contact/meta'
+            ],
+            'SiteContact\\Library' => [
+                'type' => 'file',
+                'base' => 'modules/site-contact/library'
             ]
         ],
         'files' => []
@@ -73,34 +77,44 @@ return [
                     'label' => 'Fullname',
                     'type' => 'text',
                     'rules' => [
-                        'required' => true
+                        'required' => TRUE
                     ]
                 ],
                 'email' => [
                     'label' => 'Email',
                     'type' => 'email',
                     'rules' => [
-                        'required' => true,
-                        'email' => true
+                        'required' => TRUE,
+                        'email' => TRUE
                     ],
                     'filters' => [
-                        'lowercase' => true
+                        'lowercase' => TRUE
                     ]
                 ],
                 'subject' => [
                     'label' => 'Subject',
                     'type' => 'text',
                     'rules' => [
-                        'required' => true
+                        'required' => TRUE
                     ]
                 ],
                 'content' => [
                     'label' => 'Content',
                     'type' => 'textarea',
                     'rules' => [
-                        'required' => true
+                        'required' => TRUE
                     ]
                 ]
+            ]
+        ]
+    ],
+    'site' => [
+        'robot' => [
+            'feed' => [
+                'SiteContact\\Library\\Robot::feed' => true
+            ],
+            'sitemap' => [
+                'SiteContact\\Library\\Robot::sitemap' => true
             ]
         ]
     ]
